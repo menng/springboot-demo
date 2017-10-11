@@ -2,9 +2,70 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>thymeleaf</title>
+    <title>thymeleaf 示例</title>
 </head>
 <body>
-    <p>Hello thymeleaf</p>
+<h3 th:text="'Hello ' + ${map.thymeleaf}"></h3>
+<div>
+    <p>
+        <label>城市：</label><span th:text="${city.cityName}"></span>
+    </p>
+    <p>
+        <label>城市描述：</label><span th:text="${city.description}"></span>
+    </p>
+    <p>
+        <label>城市编号：</label><input th:value="${city.provinceId}"/>
+    </p>
+    <p>
+        <label>当前时间：</label><input th:value="${#dates.format(city.date, 'yyyy-MM-dd HH:mm:ss')}"/>
+    </p>
+    <p>
+        <label>是否喜欢北京：</label>是<input type="radio" th:checked="${map.like} == 1" name="like"/>&nbsp;否<input type="radio" th:checked="${map.like} == 0" name="like"/>
+    </p>
+    <p>
+        <label>北京著名景点：</label>
+        <select>
+            <option th:each="place : ${list}" th:text="${place}"></option>
+        </select>
+    </p>
+    <p>
+        <label>北京旅行：</label><a th:href="@{http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10065.html}" target="_blank">蚂蜂窝-北京</a>
+    </p>
+    <p>
+        <label>北京著名景点：</label>
+        <table >
+            <tr>
+                <td th:each="place : ${list}" th:text="${place}" style="border: 1px solid #F00"></td>
+            </tr>
+        </table>
+    </p>
+</div>
+<hr/>
+<div>
+    <p>
+        <label>表达式计算：</label>
+        <span th:text="${map.count} % 2 == 0 ? '双数': '单数'"></span><br/>
+    </p>
+    <p>
+        <label>条件判断：</label>
+        <span th:if="${map.count} &gt; 111">小于111</span><br/>&nbsp;
+        <span th:if="${map.count} &gt; 0">大于0</span><br/>&nbsp;
+        <span th:unless="${map.count} &lt; 0">大于0</span><br/>
+        <p th:switch="${map.role}">
+            <span th:case="master">U are master</span>
+            <span th:case="guest">U are guest</span>
+            <span th:case="*">U are other</span>
+        </p>
+    </p>
+    <p th:with="bCity=${city}">
+        <label>定义局部变量：</label>
+        <span th:text="${bCity.cityName}"></span>
+    </p>
+</div>
+<hr/>
+<div>
+    <p>献上我最爱的四代火影：</p>
+    <img th:src="${map.url}" style="width: 480px; height: 400px"/>
+</div>
 </body>
 </html>
