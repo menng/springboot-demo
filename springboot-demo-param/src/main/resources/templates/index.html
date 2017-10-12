@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Controller参数接收示例</title>
+    <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<div>
+    <label>基本参数接收：</label><input type="button" value="点我" id="paramBase"/><span></span>
+</div>
+<div>
+    <label>实体参数接收：</label><input type="button" value="点我" id="paramBean"/><span></span>
+</div>
+<div>
+    <label>实体中含有List的参数接收：</label><input type="button" value="点我" id="paramBeanHasList"/><span></span>
+</div>
+<div>
+    <label>列表参数接收：</label><input type="button" value="点我" id="paramList"/><span></span>
+</div>
+<div>
+    <label>实体列表参数接收：</label><input type="button" value="点我" id="paramBeanList"/><span></span>
+</div>
+<script type="text/javascript">
+$("#paramBase").on("click", function () {
+    $.get('/param/base', {'a': 'hello', 'b': 110}, function (result) {
+        $("#paramBase").next("span").text(result);
+    });
+})
+
+$("#paramBean").on("click", function () {
+    var oCity = {};
+    oCity.cityName = "北京";
+    oCity.description = "没有北漂的人生是不完美的";
+    $.post('/param/bean', oCity, function (result) {
+        $("#paramBean").next("span").text(result);
+    });
+})
+
+$("#paramBeanHasList").on("click", function () {
+    var oCity = {};
+    oCity.cityName = "北京";
+    oCity.description = "没有北漂的人生是不完美的";
+
+    var list = [];
+    list.push(110);
+    list.push(111);
+    list.push(112);
+
+    oCity.list = list;
+
+    $.ajax({
+        type: "POST",
+        url: "/param/beanHasList",
+        data: JSON.stringify(oCity),//将对象序列化成JSON字符串
+//        dataType: "json",
+        contentType: 'application/json;charset=utf-8', //设置请求头信息
+        success: function(data){
+            $("#paramBeanHasList").next("span").text(data);
+        },
+        error: function(res){
+            console.log("dddddd")
+        }
+    });
+})
+
+$("#paramList").on("click", function () {
+    var list = [];
+    list.push("a");
+    list.push("b");
+    list.push("c");
+
+    $.post('/param/list', {"list": list, "a": 123}, function (result) {
+        $("#paramList").next("span").text(result);
+    });
+})
+
+$("#paramBeanList").on("click", function () {
+    var list = [];
+    list.push({"cityName": "北京", "id": 101});
+    list.push({"cityName": "上海", "id": 102});
+    list.push({"cityName": "重庆", "id": 103});
+
+    $.ajax({
+        type: "POST",
+        url: "/param/beanList",
+        data: JSON.stringify(list),//将对象序列化成JSON字符串
+        dataType:"json",
+        contentType : 'application/json;charset=utf-8', //设置请求头信息
+        success: function(data){
+            $("#paramBeanList").next("span").text(data);
+        },
+        error: function(res){
+        }
+    });
+})
+</script>
+</body>
+</html>
