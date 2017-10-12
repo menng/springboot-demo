@@ -62,10 +62,13 @@
         <span th:text="${bCity.cityName}"></span>
     </p>
 </div>
-<hr/>
+<hr/>d
 <div>
     <p>献上我最爱的四代火影：</p>
     <img th:src="${map.url}" style="width: 480px; height: 400px"/>
 </div>
+<script th:inline="javascript">
+    var count = [[${map.count}]]
+</script>
 </body>
 </html>
