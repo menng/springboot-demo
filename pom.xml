@@ -21,6 +21,7 @@
         <module>springboot-demo-thymeleaf</module>
         <module>springboot-demo-kafka</module>
         <module>springboot-demo-mybatis</module>
+        <module>springboot-demo-param</module>
     </modules>
 
     <properties>
