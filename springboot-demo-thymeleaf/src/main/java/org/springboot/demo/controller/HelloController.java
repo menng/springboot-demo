@@ -3,7 +3,9 @@ package org.springboot.demo.controller;
 import org.springboot.demo.domain.City;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,5 +43,17 @@ public class HelloController {
         model.addAttribute("map", map);
         model.addAttribute("list", list);
         return "/thymeleaf";
+    }
+
+    @RequestMapping("/header")
+    @ResponseBody
+    public String requestHeader(@RequestHeader("token") String token) {
+        return token;
+    }
+
+    @RequestMapping("/defaultheader")
+    @ResponseBody
+    public String defaultrequestHeader(@RequestHeader(value = "token", defaultValue = "defaultToken") String token) {
+        return token;
     }
 }
