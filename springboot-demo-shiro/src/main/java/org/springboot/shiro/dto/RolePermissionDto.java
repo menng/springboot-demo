@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class RoleDto implements Serializable {
+public class RolePermissionDto implements Serializable {
 
     private static final long serialVersionUID = -5254717778111437785L;
 

@@ -17,9 +17,11 @@ public class LoginShiroRealm extends AuthorizingRealm {
     @Autowired
     private UserService userService;
 
+    /**
+     * 权限授权
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        // 权限授权
         UserInfo userInfo = (UserInfo) principalCollection.getPrimaryPrincipal();
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 
@@ -35,9 +37,11 @@ public class LoginShiroRealm extends AuthorizingRealm {
         return simpleAuthorizationInfo;
     }
 
+    /**
+     * 身份认证
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        // 身份认证
         UserInfo userInfo = userService.findByUsername((String) authenticationToken.getPrincipal());
         if (userInfo == null) {
             return null;

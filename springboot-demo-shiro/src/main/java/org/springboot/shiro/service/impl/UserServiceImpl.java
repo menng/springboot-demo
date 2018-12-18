@@ -10,7 +10,7 @@ import org.springboot.shiro.dao.domain.Role;
 import org.springboot.shiro.dao.domain.RolePermission;
 import org.springboot.shiro.dao.domain.User;
 import org.springboot.shiro.dao.domain.UserRole;
-import org.springboot.shiro.dto.RoleDto;
+import org.springboot.shiro.dto.RolePermissionDto;
 import org.springboot.shiro.dto.UserInfo;
 import org.springboot.shiro.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,11 +57,11 @@ public class UserServiceImpl implements UserService {
 
             List<Role> roles = roleRepository.findAllByIdIsIn(roleIds);
             if (roles != null && roles.size() > 0) {
-                List<RoleDto> roleDtos = new ArrayList<>();
+                List<RolePermissionDto> rolePermissionDtos = new ArrayList<>();
                 roles.stream().forEach(role -> {
-                    RoleDto roleDto = new RoleDto();
-                    roleDto.setRoleName(role.getRoleName());
-                    roleDto.setRoleId(role.getId());
+                    RolePermissionDto rolePermissionDto = new RolePermissionDto();
+                    rolePermissionDto.setRoleName(role.getRoleName());
+                    rolePermissionDto.setRoleId(role.getId());
 
                     // 权限
                     List<RolePermission> rolePermissions = rolePermissionRepository.findAllByRoleId(role.getId());
@@ -72,13 +72,13 @@ public class UserServiceImpl implements UserService {
                         });
 
                         List<Permission> permissions = permissionRepository.findAllByIdIsIn(permissionIds);
-                        roleDto.setPermissions(permissions);
+                        rolePermissionDto.setPermissions(permissions);
                     }
 
-                    roleDtos.add(roleDto);
+                    rolePermissionDtos.add(rolePermissionDto);
                 });
 
-                userInfo.setRoles(roleDtos);
+                userInfo.setRoles(rolePermissionDtos);
             }
         }
 

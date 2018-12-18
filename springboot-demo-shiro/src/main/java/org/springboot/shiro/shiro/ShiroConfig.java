@@ -1,5 +1,6 @@
 package org.springboot.shiro.shiro;
 
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -24,7 +25,19 @@ public class ShiroConfig {
     @Bean
     public LoginShiroRealm loginShiroRealm() {
         LoginShiroRealm loginShiroRealm = new LoginShiroRealm();
+        // 设置加密方式
+        loginShiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
         return loginShiroRealm;
+    }
+
+    @Bean
+    public HashedCredentialsMatcher hashedCredentialsMatcher() {
+        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+        // 采用MD5方式加密
+        hashedCredentialsMatcher.setHashAlgorithmName("MD5");
+        // 设置加密次数
+        hashedCredentialsMatcher.setHashIterations(1);
+        return hashedCredentialsMatcher;
     }
 
     @Bean
@@ -66,7 +79,7 @@ public class ShiroConfig {
 
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
-        // 注解
+        // 开启shiro注解
         AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
         advisor.setSecurityManager(securityManager);
         return advisor;

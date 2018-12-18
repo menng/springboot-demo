@@ -5,6 +5,9 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 用户信息，包括角色和权限信息
+ */
 @Data
 public class UserInfo implements Serializable {
     private static final long serialVersionUID = -5110701573392717862L;
@@ -27,5 +30,5 @@ public class UserInfo implements Serializable {
     /**
      * 角色
      */
-    private List<RoleDto> roles;
+    private List<RolePermissionDto> roles;
 }
