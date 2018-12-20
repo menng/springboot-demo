@@ -50,7 +50,6 @@ public class ShiroConfig {
         // 对所有用户认证
         map.put("/doLogin", "anon");
 
-        // 过滤链定义，从上向下顺序执行，一般将/**放在最为下边
         // authc:所有url都必须认证通过才可以访问
         // anon:所有url都可以匿名访问
         map.put("/**", "authc");
@@ -89,8 +88,9 @@ public class ShiroConfig {
     public SessionManager sessionManager() {
         MyWebSessionManager manager = new MyWebSessionManager();
         manager.setSessionDAO(redisSessionDAO());
-        manager.setGlobalSessionTimeout(3600000);
-        manager.setSessionValidationInterval(3600000);
+        // 半个小时
+        manager.setGlobalSessionTimeout(1800000);
+        manager.setSessionValidationInterval(1800000);
         return manager;
     }
 
