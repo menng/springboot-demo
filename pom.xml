@@ -26,6 +26,7 @@
         <module>springboot-demo-elasticsearch</module>
         <module>springboot-demo-rocketmq</module>
         <module>springboot-demo-jpa</module>
+        <module>springboot-demo-shiro</module>
     </modules>
 
     <properties>
