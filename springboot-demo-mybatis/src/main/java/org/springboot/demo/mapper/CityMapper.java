@@ -1,10 +1,10 @@
-package org.springboot.demo.dao;
+package org.springboot.demo.mapper;
 
 import org.springboot.demo.domain.City;
 
 import java.util.List;
 
-public interface CityDao {
+public interface CityMapper {
     City getCityInfo(String cityName);
 
     List<City> getAllCityInfo();

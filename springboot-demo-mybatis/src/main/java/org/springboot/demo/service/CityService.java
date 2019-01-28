@@ -9,5 +9,7 @@ public interface CityService {
 
     List<City> getAllCityInfo();
 
+    List<City> getAllCityInfo(Integer pageNo, Integer pageSize);
+
     Integer addCityInfo(City city);
 }
