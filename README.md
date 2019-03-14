@@ -14,3 +14,7 @@ springboot集成mybatis示例
 spring各种类型参数接收汇总示例
 #### 运行
 运行ParamApplication，访问 http://localhost:8082
+
+### springboot-demo-web
+一些组件的使用示例
+- caffeine 高性能java缓存库
