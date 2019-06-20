@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -49,9 +51,9 @@ public class CaffeineController {
 
     private List<Province> getAllProvinces(String s) {
         return Arrays.asList(
-                Province.builder().id(1).name("北京").name("我喜欢北京").build(),
-                Province.builder().id(2).name("上海").name("上海是一座国际化大都市").build(),
-                Province.builder().id(3).name("重庆").name("重庆是个美丽的城市").build());
+                Province.builder().id(1).name("北京").name("我喜欢北京").date(LocalDateTime.now()).build(),
+                Province.builder().id(2).name("上海").name("上海是一座国际化大都市").date(LocalDateTime.now()).build(),
+                Province.builder().id(3).name("重庆").name("重庆是个美丽的城市").date(LocalDateTime.now()).build());
     }
 }
 
@@ -66,4 +68,6 @@ class Province {
     private String name;
 
     private String desc;
+
+    private LocalDateTime date;
 }
