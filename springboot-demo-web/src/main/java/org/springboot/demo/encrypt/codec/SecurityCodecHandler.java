@@ -1,8 +1,7 @@
 package org.springboot.demo.encrypt.codec;
 
-
-import com.sun.istack.internal.Nullable;
-import lombok.NonNull;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 import javax.servlet.http.HttpServletRequest;
 

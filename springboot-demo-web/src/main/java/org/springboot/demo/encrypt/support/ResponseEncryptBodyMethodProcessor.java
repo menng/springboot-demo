@@ -32,6 +32,7 @@ public class ResponseEncryptBodyMethodProcessor extends RequestResponseBodyMetho
 
     @Override
     public void handleReturnValue(Object returnValue, MethodParameter returnType, ModelAndViewContainer mavContainer, NativeWebRequest webRequest) throws IOException, HttpMediaTypeNotAcceptableException, HttpMessageNotWritableException {
+        returnValue = "sffffffffffffff";
         super.handleReturnValue(returnValue, returnType, mavContainer, webRequest);
     }
 }
