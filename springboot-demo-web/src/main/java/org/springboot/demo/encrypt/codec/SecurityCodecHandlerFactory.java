@@ -1,7 +1,7 @@
 package org.springboot.demo.encrypt.codec;
 
 /**
- * @author mengxy
+ * @author menng
  */
 public class SecurityCodecHandlerFactory {
     private SecurityCodecHandler securityCodecHandler;

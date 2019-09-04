@@ -18,3 +18,6 @@ spring各种类型参数接收汇总示例
 ### springboot-demo-web
 一些组件的使用示例
 - caffeine 高性能java缓存库
+
+### springboot-demo-sharding
+注意排除druid的自动注入datasource

@@ -1,0 +1,17 @@
+CREATE DATABASE ds0 DEFAULT CHARACTER SET utf8;
+
+use ds0;
+
+CREATE TABLE city_0(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  province_id INT NOT NULL COMMENT '省份ID',
+  city_name VARCHAR (20) NOT NULL COMMENT '城市名称',
+  description VARCHAR(100) COMMENT '城市描述'
+);
+
+CREATE TABLE city_1(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  province_id INT NOT NULL COMMENT '省份ID',
+  city_name VARCHAR (20) NOT NULL COMMENT '城市名称',
+  description VARCHAR(100) COMMENT '城市描述'
+);
