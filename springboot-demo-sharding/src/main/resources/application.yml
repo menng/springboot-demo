@@ -4,7 +4,7 @@ spring:
       names: ds0
       ds0:
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://localhost:3306/ds0?serverTimezone=UTC&zeroDateTimeBehavior=CONVERT_TO_NULL&useUnicode=true&characterEncoding=utf-8&useSSL=true&autoReconnect=true
+        url: jdbc:mysql://localhost:3306/db0?serverTimezone=UTC&zeroDateTimeBehavior=CONVERT_TO_NULL&useUnicode=true&characterEncoding=utf-8&useSSL=false&autoReconnect=true
         driver-class-name: com.mysql.cj.jdbc.Driver
         username: root
         password: root
@@ -32,8 +32,9 @@ spring:
             inline:
               sharding-column: id
               algorithm-expression: city_${id%2}
-      binding-tables: city
-
+          key-generator:
+            type: SNOWFLAKE
+            column: id
     props:
       sql:
         show: true

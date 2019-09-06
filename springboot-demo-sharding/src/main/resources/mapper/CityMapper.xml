@@ -23,6 +23,9 @@
     <insert id="insertCityInfo" parameterType="org.springboot.demo.domain.City">
         insert into city
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
             <if test="provinceId != null">
                 province_id,
             </if>
@@ -34,6 +37,9 @@
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id, jdbcType=INTEGER},
+            </if>
             <if test="provinceId != null">
                 #{provinceId, jdbcType=INTEGER},
             </if>

@@ -20,4 +20,5 @@ spring各种类型参数接收汇总示例
 - caffeine 高性能java缓存库
 
 ### springboot-demo-sharding
-注意排除druid的自动注入datasource
+- 注意排除druid的自动注入datasource。
+- 分表的字段一定要是程序里指定或者生成，不能使用数据库的生成策略。
