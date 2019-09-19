@@ -1,7 +1,7 @@
 # 导入数据库，数据名称：test  用户名：root  密码：root
-CREATE DATABASE test DEFAULT CHARACTER SET utf8;
+CREATE DATABASE db0 DEFAULT CHARACTER SET utf8;
 
-use test;
+use db0;
 
 DROP TABLE city;
 CREATE TABLE city(

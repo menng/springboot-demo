@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
-      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/db0?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: root
       initial-size: 20
