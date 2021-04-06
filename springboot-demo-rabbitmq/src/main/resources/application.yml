@@ -1,8 +1,24 @@
+server:
+  port: 8089
+
 spring:
   application:
     name: rabbitmq-demo-application
   rabbitmq:
-    host: 192.168.124.20
+    host: 127.0.0.1
     port: 5672
     username: guest
     password: guest
+    listener:
+      simple:
+        # 设置重试失败后，是否丢弃，false为不丢弃时，需要设置死信队列。
+        default-requeue-rejected: false
+        # 重试，并设置次数。注意是最多消费次数，例：设置为3时，重试2次。设置为1时，不再重试。
+        retry:
+          max-attempts: 3
+          # 是否开启重试，默认：false
+          enabled: true
+          # 重试间隔，单位毫秒
+          initial-interval: 1000
+
+
