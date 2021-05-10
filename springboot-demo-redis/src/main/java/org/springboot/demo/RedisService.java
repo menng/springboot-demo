@@ -3,8 +3,11 @@ package org.springboot.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
+import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -86,4 +89,12 @@ public class RedisService {
         redisTemplate.opsForList().range(key, start, end);
     }
 
+    boolean addInBloomFilter(String key, String value) {
+        RedisScript<Boolean> script = new DefaultRedisScript<>(addInBloomLua(), Boolean.class);
+        return redisTemplate.execute(script, Collections.singletonList(key), value);
+    }
+
+    private String addInBloomLua() {
+        return "return redis.call('bf.add', KEYS[1], ARGV[1])";
+    }
 }

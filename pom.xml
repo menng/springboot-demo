@@ -30,6 +30,7 @@
         <module>springboot-demo-web</module>
         <module>springboot-demo-sharding</module>
         <module>springboot-demo-jwt</module>
+        <module>springboot-demo-rabbitmq</module>
     </modules>
 
     <properties>
