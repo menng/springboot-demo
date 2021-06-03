@@ -31,6 +31,7 @@
         <module>springboot-demo-sharding</module>
         <module>springboot-demo-jwt</module>
         <module>springboot-demo-rabbitmq</module>
+        <module>springboot-demo-tool</module>
     </modules>
 
     <properties>
