@@ -3,8 +3,7 @@ package org.springboot.demo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springboot.demo.domain.CityA;
-import org.springboot.demo.repository.CityRepository;
+import org.springboot.demo.transaction.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -12,16 +11,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JpaApplication.class)
-public class CityRepositoryTest {
+public class TransactionServiceTest {
 
     @Autowired
-    private CityRepository cityRepository;
+    private TransactionService transactionService;
 
     @Test
     public void testFindAll() {
-        Iterable<CityA.City> iterable = cityRepository.findAll();
-        iterable.forEach(city -> {
-            log.info("{}", city.getCityName());
-        });
+        transactionService.save();
     }
 }

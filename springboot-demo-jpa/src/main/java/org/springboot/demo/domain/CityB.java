@@ -1,17 +1,13 @@
-package org.springboot.demo;
+package org.springboot.demo.domain;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "city")
-public class City {
+public class CityB {
 
     @Id
     @GeneratedValue
