@@ -23,6 +23,6 @@ public class Sender {
         message.setId(11111L);
         message.setMsg(UUID.randomUUID().toString());
         message.setSendTime(new Date());
-        kafkaTemplate.send("test1", gson.toJson(message));
+        kafkaTemplate.send("quickstart-events", gson.toJson(message));
     }
 }
